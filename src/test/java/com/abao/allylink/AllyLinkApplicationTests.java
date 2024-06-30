@@ -2,8 +2,12 @@ package com.abao.allylink;
 
 import com.abao.allylink.model.domain.User;
 import com.abao.allylink.service.UserService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StopWatch;
@@ -122,6 +126,28 @@ class AllyLinkApplicationTests {
         CompletableFuture.allOf(futureList.toArray(new CompletableFuture[0])).join();
         stopWatch.stop();
         System.out.println("批量插入" + batchSize * loop + "条用户数据耗时：" + stopWatch.getTotalTimeMillis() + "毫秒");
+    }
+
+    @Resource
+    private RedissonClient redissonClient;
+
+    @Test
+    void testWatchDog(){
+        RLock lock = redissonClient.getLock("ally-link:precachejob:docache:lock");
+        boolean isLock = lock.tryLock();
+        try {
+            if (isLock) {
+                Thread.sleep(100000);
+            }
+        } catch (Exception e) {
+        } finally {
+            // 只能释放自己的锁
+            if (lock.isHeldByCurrentThread()) {
+                System.out.println("unLock");
+                lock.unlock();
+            }
+        }
+
     }
 }
 
