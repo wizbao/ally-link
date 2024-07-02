@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.abao.allylink.common.ErrorCode;
-import com.abao.allylink.model.domain.User;
+import com.abao.allylink.model.entity.User;
 import com.abao.allylink.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;

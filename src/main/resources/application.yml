@@ -6,8 +6,8 @@ spring:
     name: user-center-backend
   # DataSource Config
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/user-center
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ally-link
     username: root
     password: wb123456
   redis:
@@ -21,6 +21,9 @@ spring:
     store-type: redis
   profiles:
     active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss # 设置序列化和反序列化的时间格式
+    time-zone: GMT+8 # 设置时区
 server:
   port: 8080
   servlet:
@@ -55,4 +58,4 @@ knife4j:
         group-name: 分组名称
         api-rule: package
         api-rule-resources:
-          - com.yupi.usercenter.controller
+          - com.abao.allylink.controller

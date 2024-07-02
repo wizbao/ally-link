@@ -1,4 +1,4 @@
-package com.abao.allylink.model.domain.request;
+package com.abao.allylink.model.request;
 
 import lombok.Data;
 

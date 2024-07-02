@@ -3,7 +3,7 @@ package com.abao.allylink.job;
 import com.abao.allylink.service.UserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
-import com.abao.allylink.model.domain.User;
+import com.abao.allylink.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;

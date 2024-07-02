@@ -1,6 +1,6 @@
 package com.abao.allylink.mapper;
 
-import com.abao.allylink.model.domain.User;
+import com.abao.allylink.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

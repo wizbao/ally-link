@@ -1,4 +1,4 @@
-package com.abao.allylink.model.domain;
+package com.abao.allylink.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

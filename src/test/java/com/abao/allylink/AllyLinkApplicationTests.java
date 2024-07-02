@@ -1,9 +1,7 @@
 package com.abao.allylink;
 
-import com.abao.allylink.model.domain.User;
+import com.abao.allylink.model.entity.User;
 import com.abao.allylink.service.UserService;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.RLock;
@@ -147,7 +145,6 @@ class AllyLinkApplicationTests {
                 lock.unlock();
             }
         }
-
     }
 }
 

@@ -9,9 +9,9 @@ import com.google.gson.reflect.TypeToken;
 import com.abao.allylink.common.BaseResponse;
 import com.abao.allylink.common.ErrorCode;
 import com.abao.allylink.common.ResultUtils;
-import com.abao.allylink.model.domain.User;
-import com.abao.allylink.model.domain.request.UserLoginRequest;
-import com.abao.allylink.model.domain.request.UserRegisterRequest;
+import com.abao.allylink.model.entity.User;
+import com.abao.allylink.model.request.UserLoginRequest;
+import com.abao.allylink.model.request.UserRegisterRequest;
 import com.abao.allylink.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
  */
 
 @CrossOrigin
-@Api(tags = "用户API实现")
+@Api(tags = "用户 API实现")
 @RestController
 @RequestMapping("/user")
 @Slf4j
