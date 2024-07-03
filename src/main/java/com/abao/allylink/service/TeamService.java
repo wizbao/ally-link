@@ -2,6 +2,7 @@ package com.abao.allylink.service;
 
 import com.abao.allylink.model.entity.Team;
 import com.abao.allylink.model.entity.User;
+import com.abao.allylink.model.request.TeamJoinRequest;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -19,4 +20,6 @@ public interface TeamService extends IService<Team> {
      * @return 队伍id
      */
     long addTeam(Team team, User loginUser);
+
+    boolean joinTeam(TeamJoinRequest teamJoinRequest, User loginUser);
 }

@@ -7,6 +7,7 @@ import com.abao.allylink.exception.BusinessException;
 import com.abao.allylink.model.entity.Team;
 import com.abao.allylink.model.entity.User;
 import com.abao.allylink.model.request.TeamAddRequest;
+import com.abao.allylink.model.request.TeamJoinRequest;
 import com.abao.allylink.service.TeamService;
 import com.abao.allylink.service.UserService;
 import io.swagger.annotations.Api;
@@ -39,7 +40,7 @@ public class TeamController {
     private TeamService teamService;
 
     @PostMapping("/add")
-    @ApiOperation(value = "添加队伍")
+    @ApiOperation(value = "创建队伍")
     public BaseResponse<Long> addTeam(@RequestBody TeamAddRequest teamAddRequest, HttpServletRequest request) {
         if (teamAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -49,6 +50,16 @@ public class TeamController {
         BeanUtils.copyProperties(teamAddRequest, team);
         long teamId = teamService.addTeam(team, loginUser);
         return ResultUtils.success(teamId);
+    }
+
+    @PostMapping("/join")
+    public BaseResponse<Boolean> joinTeam(@RequestBody TeamJoinRequest teamJoinRequest, HttpServletRequest request) {
+        if (teamJoinRequest == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        User loginUser = userService.getLoginUser(request);
+        boolean result = teamService.joinTeam(teamJoinRequest, loginUser);
+        return ResultUtils.success(result);
     }
 
 }
